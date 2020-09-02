@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SongController from '../SongController/SongController';
+import PlaylistForm from '../PlaylistForm/PlaylistForm'
 
 import { getPlaylist } from '../helpers/api'
 
@@ -8,15 +9,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      songQueue: []
+      songQueue: [],
+      
     }
+
+    this.getSongFromForm = this.getSongFromForm.bind(this)
   }
 
   componentDidMount(){
     getPlaylist()
-      .then(playlist => this.setState(playlist))
+      .then(playlist => this.setState({songQueue: playlist}))
   }
 
+  getSongFromForm(song) {
+    this.state.songQueue.push(song);
+  }
 
   render() {
     return (
@@ -26,6 +33,9 @@ class App extends Component {
         </header>
         <div className="App-background">
           <main>
+            <PlaylistForm 
+              getSongFromForm={this.getSongFromForm}
+            />
           </main>
         </div> 
       </div>
