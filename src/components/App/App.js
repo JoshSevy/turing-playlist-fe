@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SongController from '../SongController/SongController';
 import PlaylistForm from '../PlaylistForm/PlaylistForm'
+import PlaylistContainer from '../PlaylistContainer/PlaylistContainer'
 
 import { getPlaylist } from '../helpers/api'
 
@@ -10,7 +11,6 @@ class App extends Component {
     super();
     this.state = {
       songQueue: [],
-      
     }
 
     this.getSongFromForm = this.getSongFromForm.bind(this)
@@ -35,6 +35,9 @@ class App extends Component {
           <main>
             <PlaylistForm 
               getSongFromForm={this.getSongFromForm}
+            />
+            <PlaylistContainer
+              songs={this.state.songQueue}  
             />
           </main>
         </div> 

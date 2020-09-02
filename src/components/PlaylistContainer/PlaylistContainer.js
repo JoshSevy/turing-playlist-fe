@@ -4,7 +4,7 @@ const PlaylistContainer = (props) => {
   return (
     <article className="playlist-container">
       {props.songs.map(song => {
-        return <p></p>
+        return <p key={Date.now()}>{song.artistName} --- {song.songName}</p>
       })}
     </article>
   )
