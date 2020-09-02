@@ -12,12 +12,13 @@ jest.mock('../helpers/api');
 describe('App Component', () => {
   it('should allow user to add a song to the songsQueue', async () => {
 
-    getPlaylist.mockResolvedValueOnce(
-      [{
-      artistName: 'ABBA',
-      songName: 'Dancing Queen',
-      url: 'http:fakeurl.com'
-    }]
+    getPlaylist.mockResolvedValue([
+        {
+        artistName: 'ABBA',
+        songName: 'Dancing Queen',
+        url: 'http:fakeurl.com'
+        }
+      ]
     )
 
     render(      
