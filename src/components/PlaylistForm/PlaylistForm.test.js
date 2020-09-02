@@ -33,9 +33,15 @@ describe('Playlist Form Component', () => {
 
     fireEvent.change(songInput, {target: {value: 'Swear'}});
     fireEvent.change(artistInput, {target: {value: 'Cariopea'}});
-    fireEvent.change(linkInput, {target: {value: 'http'}}
+    fireEvent.change(linkInput, {target: {value: 'http'}});
 
-    
+    const songCheck = screen.getByDisplayValue(/swear/i);
+    const artistCheck = screen.getByDisplayValue(/cariopea/i);
+    const linkCheck = screen.getByDisplayValue(/http/i);
 
+    expect(songCheck).toBeInTheDocument();
+    expect(artistCheck).toBeInTheDocument();
+    expect(linkCheck).toBeInTheDocument();
   })
+
 })

@@ -6,11 +6,14 @@ import PlaylistContainer from '../PlaylistContainer/PlaylistContainer'
 
 import { getPlaylist } from '../helpers/api'
 
+import PropTypes from 'prop-types';
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       songQueue: [],
+      error: ""
     }
 
     this.getSongFromForm = this.getSongFromForm.bind(this)
@@ -19,6 +22,7 @@ class App extends Component {
   componentDidMount(){
     getPlaylist()
       .then(playlist => this.setState({songQueue: playlist}))
+      .catch(error => this.setState({error: new Error('Something went wrong')}))
   }
 
   getSongFromForm(song) {
@@ -47,3 +51,8 @@ class App extends Component {
 }
 
 export default App;
+
+App.propTypes = {
+  songQueue: PropTypes.array,
+  error: PropTypes.string
+}
